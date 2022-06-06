@@ -1,0 +1,64 @@
+*** PnP-GameMaster's SoundBar ***
+
+* Allgemeine Beschreibung *
+
+Ein Soundpad für Pen & Paper-Rollenspiele, über das die Spielleiterin/der Spielleiter Musik, Hintergrundgräusche und Soundeffekte steuern kann.
+
+
+*** Erfordert die PyGame-Bibliothek ***
+
+
+* Dateistruktur:
+
+soundbar.py: Komplettes Programm
+
+soundlistX.txt: X = 1 bis 5; abgspeicherte Soundsets
+
+soundexplorer_X: X = mel, amb, eff; Verschiedene Listen mit Musik/Sounds, die in die jeweiligen Bereiche geladen werden
+
+\Musik: Unterordner, in welchem die Soundfiles liegen
+
+
+* Persönliche Anmerkung
+
+Der Code habe ich mit äußerst laienhaften Python-Kenntnissen auf die Schnelle zusammengeklöppelt. Ich habe nämlich im Internet nichts Vergleichbares gefunden, was für meine Bedarfe passend gewesen wäre. Also habe ich mir eben selbst was zusammengebastelt.
+
+Perfekt geht sicher anders, ganz bestimmt kann man das gleiche Ergebnis mit deutlich weniger Code erreichen oder das Ding schneller laufen lassen. Aber, hey, ich fange gerade erst an. ;) Please be gentle...
+
+
+*** Funktionsweise ***
+
+Es gibt drei Sound-Bereiche, die räumlich und durch Farben (blau = Melodien, grün = Ambient Sounds, gelb = Effekte) voneinander abgegrenzt sind. In jedem Bereich gibt es acht bis zwölf Buttons, die mit Musik/Geräuschen belegt sind bzw. belegt werden können. Richtig zusammengestellt bieten sie einen akustischen Hintergrund für Pen & Paper-Spielrunden.
+
+Im grauen Bereich rechts unten befindet sich die globale Steuerung. Hier kann man alle Sounds stoppen, für die einzelnen Bereiche die Lautstärke anpassen, den Fade (de-)aktivieren oder Soundsets (= Button-Belegung) speichern und laden. "Exit" beendet ohne Rückfrage das Programm.
+
+Sounds werden durch Anklicken abgespielt, ist Loop aktiv, läuft der Sound, bis er manuell beendet wird. Die Fade-Zeit ist auf acht Sekunden hardgecoded, die Dauer fand ich ganz passend. Das kann sich aber jeder in Zeile 449 selbst anpassen.
+
+Effekte (gelber Bereich) sind in der Regel kurze Sounds, die grundsätzlich nicht geloopt und niemals gefadet werden. Loop ist hier aber trotzdem möglich (z. B. um den Schmied dauerhaft Eisen kloppen zu lassen).
+
+Rechtsklick auf einen Sound-Button öffnet den Sound-Explorer. Hier kann man den Knöpfen neue Sounds zuweisen. Der Sound-Explorer greift auf die Einträge in den Dateien
+
+- soundexplorer_amb.txt
+- soundexplorer_eff.txt
+- soundexplorer_mel.txt
+
+zu. Hier müssen die Namen der Sound-Files kommasepariert ohne Dateiendung und ohne Anführungszeichen reingeschrieben werden. Beispiel:
+
+	Hund bellt,Katze miaut,Hahn kräht,Pferd wiehert,Kuh muht
+
+Die entsprechenden Sound-Files müssen im Unterordner "\Musik" im Dateiformat MP3 liegen.
+
+Beim Starten eines neuen Sounds kann es - abhängig von der Größe der Sound-Datei - eine kurze Unterbrechung der laufenden Sounds geben, weil ein Sound erst dann eingelesen wird, wenn er tatsächlich aktiviert wird. Das Einlesen beansprucht einige Rechenleistung, dauert aber in der Regel nur Bruchteile von Sekunden.
+
+*** Lizenz-Informationen ***
+
+Mit meinem Script könnt ihr tun, was ihr wollt. Bastelt gern damit rum. Tut einfach, worauf Ihr Bock habt. :)
+
+*** Woher kriege ich denn Soundfiles? ***
+
+Hier sind gute Quellen:
+
+https://freesound.org/ - Tolle Fundgrube für Sound-Effekte aller Art
+https://tabletopaudio.com/ - Großartige Ambient-Sounds und Musikstücke
+https://www.fesliyanstudios.com/ - Hier gibt es tolle Soundstücke und Effekte
+
